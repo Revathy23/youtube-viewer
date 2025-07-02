@@ -21,26 +21,9 @@ A lightweight YouTube viewer built with **React**, **Redux**, and **TypeScript**
 - YouTube Data API v3
 
 ## Folder Structure
-src/
-├── components/ # UI components
-│ ├── search_bar.tsx
-│ ├── video_list.tsx
-│ ├── video_detail.tsx
-| ├── video_list_item.tsx
-│ └── comment_list.tsx
-├── store/ # Redux slices
-│ ├── videoSlice.ts
-│ ├── commentSlice.ts
-│ └── index.ts
-├── types/ # TypeScript types
-│ ├── Video.ts
-| ├── Comment.ts
-│ └── youtube-api-search.d.ts
-├── App.tsx # Main App logic
-├── index.tsx # Entry point
-public/
-├── style/ 
-│ ├── index.css # Global styles
+
+![image](https://github.com/user-attachments/assets/c012c55f-bad5-487e-abd9-a8d1a05dfc9a)
+
 
 ## Getting Started
 
