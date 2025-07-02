@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Comment } from "../types/Comment";
 import { Video } from "../types/Video";
 
@@ -10,6 +11,13 @@ interface CommentListProps {
 }
 
 const CommentList: React.FC<CommentListProps> = ({ comments, loading, onLoadMore, hasMore, selectedVideo }) => {
+    const loadMoreRef = useRef<HTMLButtonElement>(null);
+
+    useEffect(() => {
+        if (loadMoreRef.current) {
+        loadMoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    }, [comments.length]);
 
     if (loading) {
         return <div className="loading-comments">Loading comments...</div>;
@@ -50,7 +58,7 @@ const CommentList: React.FC<CommentListProps> = ({ comments, loading, onLoadMore
                 })}
             </ul>
         {hasMore && (
-            <button onClick={onLoadMore} className="load-more-btn">
+            <button ref={loadMoreRef} onClick={onLoadMore} className="load-more-btn">
                 Load more
             </button>
         )}
