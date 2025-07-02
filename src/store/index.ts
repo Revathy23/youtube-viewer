@@ -1,18 +1,23 @@
+import { configureStore } from "@reduxjs/toolkit";
+import videoReducer from "./videoSlice";
+import commentReducer from "./commentSlice";
 import {
-    useDispatch as useReduxDispatch,
-    useSelector as useReduxSelector,
-  } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import videoReducer from './videoSlice';
-import commentReducer from './commentSlice';
+  TypedUseSelectorHook,
+  useDispatch as useReduxDispatch,
+  useSelector as useReduxSelector,
+} from "react-redux";
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     videos: videoReducer,
     comments: commentReducer,
   },
 });
 
-export const useSelector = useReduxSelector;
-export const useDispatch = () => useReduxDispatch();
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch: () => AppDispatch = useReduxDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
+
 export default store;

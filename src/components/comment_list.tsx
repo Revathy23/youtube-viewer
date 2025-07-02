@@ -1,18 +1,29 @@
 import { Comment } from "../types/Comment";
+import { Video } from "../types/Video";
 
 interface CommentListProps {
   comments: Comment[];
   loading?: boolean;
   onLoadMore?: () => void;
   hasMore?: boolean;
+  selectedVideo?: Video | null;
 }
 
-const CommentList: React.FC<CommentListProps> = ({ comments, loading, onLoadMore, hasMore }) => {
+const CommentList: React.FC<CommentListProps> = ({ comments, loading, onLoadMore, hasMore, selectedVideo }) => {
 
-    if (loading) return <p>Loading comments...</p>;
-
-    if(!comments.length) 
-        return <div>No comments available.</div>
+    if (loading) {
+        return <div className="loading-comments">Loading comments...</div>;
+    }
+    if (!comments.length && !loading && selectedVideo) {
+        return (
+            <div className="no-comments">
+            No comments available.
+            </div>
+        );
+    }
+    if (!selectedVideo) {
+        return null; 
+    }
     
     return (
         <div className="comment-section">

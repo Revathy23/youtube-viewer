@@ -34,6 +34,7 @@
 
 .comment-section h4 {
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .comment-list {
@@ -62,12 +63,42 @@
 }
 
 .user-avatar {
-  width: "40px";
-  height: "40px";
-  border-radius: "50%";
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .comment-content{
-  display: "flex";
-  gap: "1rem"
+  display: flex;
+  gap: 1rem;
+}
+
+.loading-comments{
+  padding: 1rem;
+  font-style: italic;
+  color: #666;
+}
+
+.no-comments{
+  padding: 1rem;
+  color: #888;
+  font-style: italic;
+  text-align: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; 
+  gap: 16px; 
+}
+
+.left-content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-list {
+  flex: 1;
 }

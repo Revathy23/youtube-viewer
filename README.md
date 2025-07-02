@@ -1,23 +1,79 @@
-This is a testing starter project using the Youtube API
+# YouTube Viewer App
 
-## Prerequisites
+A lightweight YouTube viewer built with **React**, **Redux**, and **TypeScript**,allowing users to search for videos, view video details, and browse top comments.
 
-1. Add your own personal youtube API Key in App.js `const API_KEY = "ADD_API_KEY_HERE";`
-   you can generate one from the [Google Developer Console](https://console.developers.google.com/)
+## Features
 
-## Available Scripts
+-  Debounced video search via YouTube Data API v3
+-  Global state management using Redux Toolkit
+-  Comment section with "Load More" support
+-  Avatar and author details for each comment
+-  Loading indicators
+-  TypeScript support with strict typings
+-  Responsive layout (video + comment + video list)
 
-In the project directory, you can run:
+## Tech Stack
 
-### `yarn install` | `yarna`
+- React (with hooks)
+- TypeScript
+- Redux Toolkit
+- Lodash (for debouncing)
+- YouTube Data API v3
 
-Install all npm dependencies
+## Folder Structure
+src/
+├── components/ # UI components
+│ ├── search_bar.tsx
+│ ├── video_list.tsx
+│ ├── video_detail.tsx
+| ├── video_list_item.tsx
+│ └── comment_list.tsx
+├── store/ # Redux slices
+│ ├── videoSlice.ts
+│ ├── commentSlice.ts
+│ └── index.ts
+├── types/ # TypeScript types
+│ ├── Video.ts
+| ├── Comment.ts
+│ └── youtube-api-search.d.ts
+├── App.tsx # Main App logic
+├── index.tsx # Entry point
+public/
+├── style/ 
+│ ├── index.css # Global styles
 
-### `yarn start`
+## Getting Started
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-if localhost is not working because of the https redirect try Open [http://127.0.0.1:3000](http://127.0.0.1:3000)
+### 1. Clone the Repository
+### 2. Install Dependencies
+### 3. Set up Environment variables
+### 4. Run the App
 
-The page will reload if you make edits.<br>
-You will also see any errors in the console.
+```bash
+git clone https://github.com/your-username/youtube-viewer.git
+cd youtube-viewer
+
+npm install
+# or
+yarn install
+
+REACT_APP_YOUTUBE_API_KEY=your_youtube_api_key_here
+
+npm start
+# or
+yarn start
+```
+
+## 🚀 Future Improvements
+
+- Add replies to comments
+- Implement infinite scroll for comments instead of "Load More"
+- Pagination support for video search
+- Add dark mode toggle
+- Improve responsiveness and styling for mobile devices
+
+
+## Author
+
+**Revathy V**
+💻 Frontend Developer | React | TypeScript | Redux  
