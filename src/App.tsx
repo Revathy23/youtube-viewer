@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import _ from "lodash";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./store";
+import { RootState, useAppDispatch, useAppSelector } from "./store";
 import { setSelectedVideo, fetchVideos } from "./store/videoSlice";
 import { fetchComments, loadMoreComments } from "./store/commentSlice";
 import SearchBar from "./components/search_bar";
@@ -11,13 +10,13 @@ import CommentList from "./components/comment_list";
 import { Video } from "./types/Video";
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const videos = useSelector((state: RootState) => state.videos.videos);
-  const selectedVideo = useSelector((state: RootState) => state.videos.selectedVideo);
-  const comments = useSelector((state: RootState) => state.comments.list);
-  const loading = useSelector((state: RootState) => state.comments.loading);
-  const hasMore = useSelector((state: RootState) => state.comments.hasMore);
+  const videos = useAppSelector((state: RootState) => state.videos.videos);
+  const selectedVideo = useAppSelector((state: RootState) => state.videos.selectedVideo);
+  const comments = useAppSelector((state: RootState) => state.comments.list);
+  const loading = useAppSelector((state: RootState) => state.comments.loading);
+  const hasMore = useAppSelector((state: RootState) => state.comments.hasMore);
 
   const videoSearch = _.debounce((term: string) => {
     const searchTerm = term.trim() || "liverpool"; //if the search bar is cleared, liverpool will be the search term

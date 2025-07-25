@@ -36,30 +36,30 @@ export const { setVideos, setSelectedVideo, setLoading } = videoSlice.actions;
 export default videoSlice.reducer;
 
 export const fetchVideos = (term: string) => async (dispatch: AppDispatch) => {
-  dispatch(videoSlice.actions.setLoading(true));
+  dispatch(setLoading(true));
   const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
   if (!apiKey) {
     console.error("Missing API key");
-    dispatch(videoSlice.actions.setLoading(false));
+    dispatch(setLoading(false));
     return;
   }
   try {
     const YTSearch = require("youtube-api-search");
     YTSearch({ key: apiKey, term }, (videos: Video[]) => {
       if (videos.length > 0) {
-        dispatch(videoSlice.actions.setVideos(videos));
-        dispatch(videoSlice.actions.setSelectedVideo(videos[0]));
+        dispatch(setVideos(videos));
+        dispatch(setSelectedVideo(videos[0]));
         dispatch(fetchComments(videos[0].id.videoId));
       } else {
-        dispatch(videoSlice.actions.setVideos([]));
-        dispatch(videoSlice.actions.setSelectedVideo(null));
+        dispatch(setVideos([]));
+        dispatch(setSelectedVideo(null));
       }
-      dispatch(videoSlice.actions.setLoading(false));
+      dispatch(setLoading(false));
     });
   } catch (error) {
     console.error("Video fetch error:", error);
-    dispatch(videoSlice.actions.setVideos([]));
-    dispatch(videoSlice.actions.setSelectedVideo(null));
-    dispatch(videoSlice.actions.setLoading(false));
+    dispatch(setVideos([]));
+    dispatch(setSelectedVideo(null));
+    dispatch(setLoading(false));
   }
 };

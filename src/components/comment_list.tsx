@@ -14,10 +14,12 @@ const CommentList: React.FC<CommentListProps> = ({ comments, loading, onLoadMore
     const loadMoreRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
-        if (loadMoreRef.current) {
-        loadMoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+        if (comments.length > 10 && hasMore) {
+            if (loadMoreRef.current) {
+            loadMoreRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
         }
-    }, [comments.length]);
+    }, [comments.length, hasMore]);
 
     if (loading) {
         return <div className="loading-comments">Loading comments...</div>;
